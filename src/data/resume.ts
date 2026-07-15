@@ -1,0 +1,158 @@
+export const profile = {
+  name: "민연식",
+  role: "웹 개발자",
+  email: "minys94@naver.com",
+  github: "https://github.com/syarosu",
+  blog: "https://velog.io/@youns1121/posts",
+  tagline: "코드는 얕게, 생각은 깊게",
+  summary:
+    "팀워크와 사용자 관점의 개발을 통해 더 나은 결과물을 만들어내는 데 기여하고자 합니다.",
+};
+
+export const skills = [
+  "React",
+  "TypeScript",
+  "Next.js",
+  "axios",
+  "Java",
+  "Spring",
+  "SQL",
+];
+
+export type Career = {
+  company: string;
+  role: string;
+  period: string;
+  duration: string;
+  department?: string;
+  tasks: string[];
+};
+
+export const careers: Career[] = [
+  {
+    company: "(주)엔텔스",
+    role: "웹 개발자",
+    period: "2022.12. ~ 재직 중",
+    duration: "3년 8개월, 정규직",
+    department: "Cloud AX 본부",
+    tasks: [
+      "React 기반 이동통신사 관리자용 대용량 기지국 관리 기능 설계 및 개발",
+      "방송용 미디어 Workflow Designer 개발",
+      "사내 솔루션 웹 개발 및 유지보수",
+      "Java/Spring 기반 레거시 시스템 안정화 및 고도화",
+    ],
+  },
+  {
+    company: "(주)대마",
+    role: "백엔드 개발자",
+    period: "2021.04. ~ 2022.10.",
+    duration: "1년 7개월, 정규직",
+    department: "개발팀",
+    tasks: ["Spring Boot, JPA 기반 쇼핑몰/ERP 백오피스 API 설계, 개발 및 운영"],
+  },
+  {
+    company: "(주)지란지교시큐리티",
+    role: "메일보안 솔루션 엔지니어",
+    period: "2020.12. ~ 2021.04.",
+    duration: "5개월, 정규직",
+    department: "메일보안사업부",
+    tasks: ["Linux 환경 기반 메일보안 솔루션 기술 지원 및 트러블슈팅"],
+  },
+];
+
+export type Project = {
+  name: string;
+  client?: string;
+  affiliation?: string;
+  period: string;
+  description: string;
+  highlights: string[];
+};
+
+export const projects: Project[] = [
+  {
+    name: "Cloud BEMS/E-Optimizer 서비스 운영사업",
+    client: "SK텔레콤",
+    period: "2026.02. ~ 진행 중 (6개월)",
+    description: "클라우드 기반 에너지 관리 시스템의 CSR → SSR 페이지 전환",
+    highlights: [
+      "React 기반 CSR을 Spring Boot/Thymeleaf 기반 SSR로 전면 전환",
+      "관리자 대시보드 UI/UX 재설계로 운영 효율성 증대",
+    ],
+  },
+  {
+    name: "웹 보안 취약점 개선 및 레거시 아키텍처 리팩토링",
+    affiliation: "(주)엔텔스",
+    period: "2025.11. ~ 2025.12. (2개월)",
+    description: "통신망 감시 시스템의 보안 취약점 조치 및 DB 설정 구조 개선",
+    highlights: [
+      "SQL Injection 방어 강화 (MyBatis 매개변수화 쿼리)",
+      "세션 ID 강제 재발급으로 Session Fixation 방지",
+      "전역 예외 처리 적용으로 SQL 에러 정보 노출 차단",
+      "Spring Java Config 방식으로 DB 설정 개편",
+    ],
+  },
+  {
+    name: "NWDAF (지능형 기지국 관리 플랫폼)",
+    client: "SK텔레콤",
+    period: "2024.06. ~ 2025.01. (8개월)",
+    description:
+      "기지국 트래픽 급증 시 네트워크 품질 문제를 사전 대응하는 플랫폼",
+    highlights: [
+      "shadcn/ui 기반 사내 디자인 시스템 구축으로 UI/UX 일관성 확보",
+      "Tanstack Query 캐싱 전략으로 페이지 평균 로딩 속도 최대 2초 단축",
+      "HTTP 청크 분할 전송으로 대용량 기지국 데이터 업로드 시간을 2분 이상에서 20초 이내로 단축",
+    ],
+  },
+  {
+    name: "Site Manager (클라우드 방송 플랫폼)",
+    client: "SK텔레콤",
+    period: "2023.03. ~ 2024.12. (1년 10개월)",
+    description:
+      "가상화된 방송장비를 통해 자원 효율화, 채널 관리, 모니터링이 가능한 플랫폼",
+    highlights: [
+      "ReactFlow 기반 드래그 앤 드롭 워크플로우 편집기 구현",
+      "Promise.allSettled로 병렬 API 호출 시 개별 에러 관리",
+      "에러 메시지 개선으로 고객 문의율 전 월 대비 50% 감소",
+    ],
+  },
+  {
+    name: "SKLMNO/천리마폰마트 (휴대폰 판매 ERP 솔루션)",
+    affiliation: "(주)대마",
+    period: "2022.05. ~ 2022.10. (6개월)",
+    description: "휴대폰 이동통신 가입 유치 및 판매 관리 ERP 솔루션",
+    highlights: [
+      "백엔드 API 서버 개발",
+      "웹 쇼핑몰 개발 및 유지보수",
+      "JPA 기반 도메인 설계로 연관관계 순환참조 문제 해결",
+      "월 평균 10건의 유지보수 이슈 처리",
+    ],
+  },
+];
+
+export type Education = {
+  school: string;
+  degree: string;
+  period: string;
+};
+
+export const education: Education[] = [
+  {
+    school: "국민대학교 소프트웨어융합대학원",
+    degree: "석사 (소프트웨어)",
+    period: "2021.03. ~ 2023.02. (졸업)",
+  },
+  {
+    school: "성결대학교",
+    degree: "학사 (컴퓨터공학)",
+    period: "2018.03. ~ 2021.02. (졸업)",
+  },
+];
+
+export const certifications = [
+  {
+    name: "정보처리기사",
+    issuer: "한국산업인력공단",
+    date: "2017.05",
+  },
+];
