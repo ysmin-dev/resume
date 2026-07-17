@@ -16,6 +16,16 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
+function renderBold(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={i}>{part.slice(2, -2)}</strong>
+    ) : (
+      part
+    ),
+  );
+}
+
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col items-center bg-zinc-50 dark:bg-black">
@@ -25,12 +35,9 @@ export default function Home() {
           <h1 className="text-4xl font-black tracking-tight text-zinc-900 dark:text-zinc-50">
             {profile.name}
           </h1>
-          <p className="text-lg font-medium text-zinc-600 dark:text-zinc-400">
-            {profile.role}
-          </p>
-          <p className="text-zinc-700 dark:text-zinc-300">{profile.summary}</p>
-          <p className="italic text-zinc-500 dark:text-zinc-500">
-            &ldquo;{profile.tagline}&rdquo;
+          <div className="h-7" aria-hidden="true" />
+          <p className="whitespace-pre-line text-zinc-700 dark:text-zinc-300">
+            {renderBold(profile.summary)}
           </p>
           <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
             <a
@@ -46,14 +53,6 @@ export default function Home() {
               className="hover:text-zinc-900 hover:underline dark:hover:text-zinc-100"
             >
               GitHub
-            </a>
-            <a
-              href={profile.blog}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-zinc-900 hover:underline dark:hover:text-zinc-100"
-            >
-              Blog
             </a>
           </div>
         </header>

@@ -1,22 +1,26 @@
 export const profile = {
   name: "민연식",
-  role: "웹 개발자",
   email: "minys94@naver.com",
-  github: "https://github.com/syarosu",
-  blog: "https://velog.io/@youns1121/posts",
-  tagline: "코드는 얕게, 생각은 깊게",
-  summary:
-    "팀워크와 사용자 관점의 개발을 통해 더 나은 결과물을 만들어내는 데 기여하고자 합니다.",
+  github: "https://github.com/ysmin-dev",
+  summary: `사용자가 체감하는 서비스 완성도는 **데이터 처리 속도와 오류 없는 시스템**에 시작된다고 생각합니다.
+웹 개발 중심으로 **백엔드 아키텍처와 데이터 최적화** 역량을 강화해 왔습니다.
+
+동료들과의 생각의 차이를 존중하고 다양한 관점에서 시스템을 바라보는 것이 최적의 해결책을 만든다고 생각합니다
+
+'코드는 얕게, 생각은 깊게'라는 저만의 개발 철학으로, AI 기술을 적극적으로 활용한 가독성과 유지보수성을 높이는 코드 구조를 지향합니다.
+
+단순히 구현하는 개발에 머무르지 않고 사용자 관점에서 데이터와 UI/UX를 이해하며 안정적 시스템을 구축해 해나가겠습니다.`,
 };
 
 export const skills = [
+  "Java",
+  "Spring Boot",
+  "MariaDB",
   "React",
   "TypeScript",
   "Next.js",
   "axios",
-  "Java",
-  "Spring",
-  "SQL",
+  
 ];
 
 export type Career = {
