@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   careers,
   certifications,
@@ -29,31 +30,41 @@ function renderBold(text: string) {
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col items-center bg-zinc-50 dark:bg-black">
-      <main className="w-full max-w-3xl bg-white px-6 py-16 sm:px-12 print:px-0 print:py-0 dark:bg-black">
+      <main className="w-full max-w-[950px] bg-white px-6 py-16 sm:px-12 print:px-0 print:py-0 dark:bg-black">
         {/* Header */}
-        <header className="mb-16 flex flex-col gap-3 border-b border-zinc-200 pb-10 dark:border-zinc-800">
-          <h1 className="text-4xl font-black tracking-tight text-zinc-900 dark:text-zinc-50">
-            {profile.name}
-          </h1>
-          <div className="h-7" aria-hidden="true" />
-          <p className="whitespace-pre-line text-zinc-700 dark:text-zinc-300">
-            {renderBold(profile.summary)}
-          </p>
-          <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
-            <a
-              href={`mailto:${profile.email}`}
-              className="hover:text-zinc-900 hover:underline dark:hover:text-zinc-100"
-            >
-              {profile.email}
-            </a>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-zinc-900 hover:underline dark:hover:text-zinc-100"
-            >
-              GitHub
-            </a>
+        <header className="mb-16 flex flex-col gap-6 border-b border-zinc-200 pb-10 sm:flex-row sm:items-start dark:border-zinc-800">
+          <Image
+            src="/profile.jpg"
+            alt={profile.name}
+            width={360}
+            height={504}
+            priority
+            className="h-[160px] w-[158px] shrink-0 rounded-full object-cover object-center"
+          />
+          <div className="flex flex-1 flex-col gap-3">
+            <h1 className="text-4xl font-black tracking-tight text-zinc-900 dark:text-zinc-50">
+              {profile.name}
+            </h1>
+            <div className="h-7" aria-hidden="true" />
+            <p className="whitespace-pre-line text-zinc-700 dark:text-zinc-300">
+              {renderBold(profile.summary)}
+            </p>
+            <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+              <a
+                href={`mailto:${profile.email}`}
+                className="hover:text-zinc-900 hover:underline dark:hover:text-zinc-100"
+              >
+                {profile.email}
+              </a>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-zinc-900 hover:underline dark:hover:text-zinc-100"
+              >
+                GitHub
+              </a>
+            </div>
           </div>
         </header>
 
