@@ -32,18 +32,29 @@ export type Career = {
   tasks: string[];
 };
 
+function calculateTenure(startYear: number, startMonth: number): string {
+  const now = new Date();
+  const totalMonths =
+    (now.getFullYear() - startYear) * 12 + (now.getMonth() - (startMonth - 1));
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  if (years === 0) return `${months}개월`;
+  if (months === 0) return `${years}년`;
+  return `${years}년 ${months}개월`;
+}
+
 export const careers: Career[] = [
   {
     company: "(주)엔텔스",
     role: "웹 개발자",
     period: "2022.12. ~ 재직 중",
-    duration: "3년 8개월, 정규직",
+    duration: `${calculateTenure(2022, 12)}, 정규직`,
     department: "Cloud AX 본부",
     tasks: [
       "React 기반 이동통신사 관리자용 대용량 기지국 관리 기능 설계 및 개발",
-      "방송용 미디어 Workflow Designer 개발",
-      "사내 솔루션 웹 개발 및 유지보수",
       "Java/Spring 기반 레거시 시스템 안정화 및 고도화",
+      "Kafka 메시징 장애 대응 체계 설계(DB 트랜잭션 분리, 재시도/취소 로직) 및 Producer 설정 튜닝",
+      "MyBatis 쿼리 최적화로 N+1 문제 개선 및 API 응답 성능 향상",
     ],
   },
   {
@@ -82,6 +93,9 @@ export const projects: Project[] = [
     highlights: [
       "React 기반 CSR을 Spring Boot/Thymeleaf 기반 SSR로 전면 전환",
       "관리자 대시보드 UI/UX 재설계로 운영 효율성 증대",
+      "Kafka 발행 실패 시 DB 트랜잭션과 메시지 발행을 분리하고, 프론트엔드 주도 재시도(최대 10회)·자동 취소 로직을 설계해 DB-메시징 데이터 불일치 문제 해결",
+      "Kafka Producer 재접속/타임아웃 설정 최적화로 브로커 장애 시 초당 수십 줄씩 발생하던 로그 폭주 제거",
+      "동일 파라미터에도 응답시간이 최대 80배(87ms~6.94s) 벌어지는 원인을 N+1 쿼리 구조로 규명하고, 배치(IN절) 쿼리 전환 리팩토링 설계",
     ],
   },
   {
