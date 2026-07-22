@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   careers,
   certifications,
@@ -64,6 +65,12 @@ export default function Home() {
               >
                 GitHub
               </a>
+              <Link
+                href="/posts"
+                className="hover:text-zinc-900 hover:underline dark:hover:text-zinc-100"
+              >
+                이슈 기록
+              </Link>
             </div>
           </div>
         </header>
