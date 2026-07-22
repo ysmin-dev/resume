@@ -75,13 +75,15 @@ export const careers: Career[] = [
   },
 ];
 
+export type Highlight = string | { text: string; href: string };
+
 export type Project = {
   name: string;
   client?: string;
   affiliation?: string;
   period: string;
   description: string;
-  highlights: string[];
+  highlights: Highlight[];
 };
 
 export const projects: Project[] = [
@@ -93,9 +95,18 @@ export const projects: Project[] = [
     highlights: [
       "React 기반 CSR을 Spring Boot/Thymeleaf 기반 SSR로 전면 전환",
       "관리자 대시보드 UI/UX 재설계로 운영 효율성 증대",
-      "Kafka 발행 실패 시 DB 트랜잭션과 메시지 발행을 분리하고, 프론트엔드 주도 재시도(최대 10회)·자동 취소 로직을 설계해 DB-메시징 데이터 불일치 문제 해결",
-      "Kafka Producer 재접속/타임아웃 설정 최적화로 브로커 장애 시 초당 수십 줄씩 발생하던 로그 폭주 제거",
-      "동일 파라미터에도 응답시간이 최대 80배(87ms~6.94s) 벌어지는 원인을 N+1 쿼리 구조로 규명하고, 배치(IN절) 쿼리 전환 리팩토링 설계",
+      {
+        text: "Kafka 발행 실패 시 DB 트랜잭션과 메시지 발행을 분리하고, 프론트엔드 주도 재시도(최대 10회)·자동 취소 로직을 설계해 DB-메시징 데이터 불일치 문제 해결",
+        href: "/posts/kafka-publish-failure-and-retry",
+      },
+      {
+        text: "Kafka Producer 재접속/타임아웃 설정 최적화로 브로커 장애 시 초당 수십 줄씩 발생하던 로그 폭주 제거",
+        href: "/posts/kafka-producer-infinite-retry-log",
+      },
+      {
+        text: "동일 파라미터에도 응답시간이 최대 80배(87ms~6.94s) 벌어지는 원인을 N+1 쿼리 구조로 규명하고, 배치(IN절) 쿼리 전환 리팩토링 설계",
+        href: "/posts/usagetree-n-plus-1-latency",
+      },
     ],
   },
   {

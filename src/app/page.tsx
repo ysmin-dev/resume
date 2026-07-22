@@ -145,9 +145,21 @@ export default function Home() {
                   {project.description}
                 </p>
                 <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-zinc-700 dark:text-zinc-300">
-                  {project.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
+                  {project.highlights.map((highlight) => {
+                    if (typeof highlight === "string") {
+                      return <li key={highlight}>{highlight}</li>;
+                    }
+                    return (
+                      <li key={highlight.text}>
+                        <Link
+                          href={highlight.href}
+                          className="font-semibold underline decoration-dotted underline-offset-2 hover:text-zinc-900 dark:hover:text-zinc-50"
+                        >
+                          {highlight.text}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}
