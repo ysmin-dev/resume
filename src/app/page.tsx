@@ -9,6 +9,7 @@ import {
   skills,
 } from "@/data/resume";
 import { PrintButton } from "@/components/PrintButton";
+import { SectionNav } from "@/components/SectionNav";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -31,9 +32,13 @@ function renderBold(text: string) {
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col items-center bg-zinc-50 dark:bg-black">
+      <SectionNav />
       <main className="w-full max-w-[950px] bg-white px-6 py-16 sm:px-12 print:px-0 print:py-0 dark:bg-black">
         {/* Header */}
-        <header className="mb-16 flex flex-col gap-6 border-b border-zinc-200 pb-10 sm:flex-row sm:items-start dark:border-zinc-800">
+        <header
+          id="about"
+          className="mb-16 flex scroll-mt-20 flex-col gap-6 border-b border-zinc-200 pb-10 sm:flex-row sm:items-start dark:border-zinc-800"
+        >
           <Image
             src="/profile.jpg"
             alt={profile.name}
@@ -51,6 +56,12 @@ export default function Home() {
               {renderBold(profile.summary)}
             </p>
             <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+              <a
+                href={`tel:${profile.phone.replace(/-/g, "")}`}
+                className="hover:text-zinc-900 hover:underline dark:hover:text-zinc-100"
+              >
+                {profile.phone}
+              </a>
               <a
                 href={`mailto:${profile.email}`}
                 className="hover:text-zinc-900 hover:underline dark:hover:text-zinc-100"
@@ -76,7 +87,7 @@ export default function Home() {
         </header>
 
         {/* Skills */}
-        <section className="mb-14">
+        <section id="skills" className="mb-14 scroll-mt-20">
           <SectionTitle>기술 스택</SectionTitle>
           <div className="flex flex-wrap gap-2">
             {skills.map((skill) => (
@@ -91,7 +102,7 @@ export default function Home() {
         </section>
 
         {/* Career */}
-        <section className="mb-14">
+        <section id="career" className="mb-14 scroll-mt-20">
           <SectionTitle>경력</SectionTitle>
           <div className="flex flex-col gap-8">
             {careers.map((career) => (
@@ -122,7 +133,7 @@ export default function Home() {
         </section>
 
         {/* Projects */}
-        <section className="mb-14">
+        <section id="projects" className="mb-14 scroll-mt-20">
           <SectionTitle>프로젝트</SectionTitle>
           <div className="flex flex-col gap-8">
             {projects.map((project) => (
@@ -167,7 +178,7 @@ export default function Home() {
         </section>
 
         {/* Education */}
-        <section className="mb-14">
+        <section id="education" className="mb-14 scroll-mt-20">
           <SectionTitle>학력</SectionTitle>
           <div className="flex flex-col gap-4">
             {education.map((edu) => (
@@ -192,7 +203,7 @@ export default function Home() {
         </section>
 
         {/* Certifications */}
-        <section>
+        <section id="certifications" className="scroll-mt-20">
           <SectionTitle>자격증</SectionTitle>
           <div className="flex flex-col gap-2">
             {certifications.map((cert) => (
