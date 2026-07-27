@@ -1,5 +1,6 @@
 export const profile = {
   name: "민연식",
+  phone: "010-5095-5912",
   email: "minys94@naver.com",
   github: "https://github.com/ysmin-dev",
   summary: `사용자가 체감하는 서비스 완성도는 **데이터 처리 속도와 오류 없는 시스템**에 시작된다고 생각합니다.
@@ -53,8 +54,7 @@ export const careers: Career[] = [
     tasks: [
       "React 기반 이동통신사 관리자용 대용량 기지국 관리 기능 설계 및 개발",
       "Java/Spring 기반 레거시 시스템 안정화 및 고도화",
-      "Kafka 메시징 장애 대응 체계 설계(DB 트랜잭션 분리, 재시도/취소 로직) 및 Producer 설정 튜닝",
-      "MyBatis 쿼리 최적화로 N+1 문제 개선 및 API 응답 성능 향상",
+      "Kafka 메시징 장애 대응 체계 설계(DB 트랜잭션 분리, 재시도/취소 로직) 및 Producer 설정 튜닝",      
     ],
   },
   {
@@ -88,47 +88,47 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: "Cloud BEMS/E-Optimizer 관리자 웹",
+    name: "에너지 관리 시스템(Energy Management System) 운영",
     client: "SK텔레콤",
     period: "2026.02. ~ 진행 중 (6개월)",
     description:
-      "클라우드 기반 에너지 관리 시스템(EMS) 관리자 웹 신규 구축 및 CSR → SSR 전환",
+      "에너지 관리 시스템(EMS) 관리자 웹 신규 구축 및 CSR → SSR 전환",
     highlights: [
       "React 기반 CSR을 Spring Boot/Thymeleaf 기반 SSR로 전면 전환",
-      "알람/DDC/Agent 관리, 메뉴·권한 관리 등 관리자 화면 신규 구축 및 Toast 알림 전환 등 UI/UX 표준화",
-      "에너지계통 트리 ID 채번 방식을 2자리 숫자(01~99)에서 영문 조합(AA~ZZ)으로 확장해 등록 한도 문제 해소",
+      "알람/DDC/Agent 등 관리자 화면 신규 구축 및 UI 표준화",
+      "에너지계통 트리 ID 채번을 영문 조합으로 확장해 등록 한도 해소",
       {
-        text: "Kafka 발행 실패 시 DB 트랜잭션과 메시지 발행을 분리하고, 프론트엔드 주도 재시도(최대 10회)·자동 취소 로직을 설계해 DB-메시징 데이터 불일치 문제 해결",
+        text: "Kafka 발행 실패 시 DB 정합성을 재시도·취소로 보장",
         href: "/posts/kafka-publish-failure-and-retry",
       },
       {
-        text: "Kafka Producer 재접속/타임아웃 설정 최적화로 브로커 장애 시 초당 수십 줄씩 발생하던 로그 폭주 제거",
+        text: "Kafka Producer 설정 튜닝으로 장애 시 로그 폭주 제거",
         href: "/posts/kafka-producer-infinite-retry-log",
       },
       {
-        text: "마이그레이션 등록 시 서버가 캐스케이드 방식으로 의도치 않은 조합까지 자동 생성하던 문제를, 확정된 조합만 저장하도록 구조를 바꾸고 서버 유효성 검증을 추가해 해결",
+        text: "마이그레이션 조합 자동 생성 오류를 확정 조합만 저장하도록 개선",
         href: "/posts/migration-unintended-combination",
       },
     ],
   },
   {
-    name: "EMS 통계·데이터 이관 배치 시스템 구축",
+    name: "태양광 에너지 통계 배치 시스템 구축",
     client: "SK텔레콤",
     period: "2026.06. ~ 진행 중 (2개월)",
     description:
       "에너지/태양광 통계 집계 및 데이터 이관을 담당하는 Java 배치 시스템 신규 구축과 안정화",
     highlights: [
       {
-        text: "시간별~연별 통계 집계 SQL의 불필요한 단위 변환과 날짜 포맷 오류로 인한 통계값 왜곡을 원인 분석 후 매퍼 4종 수정 및 단위 테스트로 회귀 방지",
+        text: "통계 집계 SQL의 단위 변환·날짜 포맷 오류로 인한 값 왜곡 수정",
         href: "/posts/energy-tree-stat-distortion",
       },
-      "태양광 통계 집계 배치 신규 개발 — CTE 기반 집계 SQL 설계, UPSERT로 재실행 안전성 확보, 15분 단위 버킷 처리",
+      "태양광 통계 집계 배치 신규 개발 (CTE·UPSERT 설계)",
       {
-        text: "이관 데이터에서 다른 빌딩 값이 섞인 것으로 의심되는 이상값을 단계별 진단 로그로 추적해 원인을 특정하고, 무중단 UPSERT 방식으로 안전하게 보정",
+        text: "이관 데이터 빌딩값 혼입을 진단 로그로 추적해 무중단 보정",
         href: "/posts/solar-data-cross-building-contamination",
       },
-      "Kafka로 수신한 마이그레이션 작업을 실행하는 CLI 연동 배치 구축, 기간(Daily Range) 단위 재처리 기능으로 확장",
-      "운영 로그에 SQL 파라미터·조회 결과가 그대로 노출되는 위험을 발견해 p6spy 도입 및 프로파일별 로그 레벨 분리로 차단",
+      "Kafka 수신 마이그레이션 실행 CLI 배치 구축 및 기간 재처리 확장",
+      "운영 로그의 SQL 파라미터 노출 위험을 p6spy 도입으로 차단",
     ],
   },
   {
