@@ -88,13 +88,15 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: "Cloud BEMS/E-Optimizer 서비스 운영사업",
+    name: "Cloud BEMS/E-Optimizer 관리자 웹",
     client: "SK텔레콤",
     period: "2026.02. ~ 진행 중 (6개월)",
-    description: "클라우드 기반 에너지 관리 시스템의 CSR → SSR 페이지 전환",
+    description:
+      "클라우드 기반 에너지 관리 시스템(EMS) 관리자 웹 신규 구축 및 CSR → SSR 전환",
     highlights: [
       "React 기반 CSR을 Spring Boot/Thymeleaf 기반 SSR로 전면 전환",
-      "관리자 대시보드 UI/UX 재설계로 운영 효율성 증대",
+      "알람/DDC/Agent 관리, 메뉴·권한 관리 등 관리자 화면 신규 구축 및 Toast 알림 전환 등 UI/UX 표준화",
+      "에너지계통 트리 ID 채번 방식을 2자리 숫자(01~99)에서 영문 조합(AA~ZZ)으로 확장해 등록 한도 문제 해소",
       {
         text: "Kafka 발행 실패 시 DB 트랜잭션과 메시지 발행을 분리하고, 프론트엔드 주도 재시도(최대 10회)·자동 취소 로직을 설계해 DB-메시징 데이터 불일치 문제 해결",
         href: "/posts/kafka-publish-failure-and-retry",
@@ -104,9 +106,29 @@ export const projects: Project[] = [
         href: "/posts/kafka-producer-infinite-retry-log",
       },
       {
-        text: "동일 파라미터에도 응답시간이 최대 80배(87ms~6.94s) 벌어지는 원인을 N+1 쿼리 구조로 규명하고, 배치(IN절) 쿼리 전환 리팩토링 설계",
-        href: "/posts/usagetree-n-plus-1-latency",
+        text: "마이그레이션 등록 시 서버가 캐스케이드 방식으로 의도치 않은 조합까지 자동 생성하던 문제를, 확정된 조합만 저장하도록 구조를 바꾸고 서버 유효성 검증을 추가해 해결",
+        href: "/posts/migration-unintended-combination",
       },
+    ],
+  },
+  {
+    name: "EMS 통계·데이터 이관 배치 시스템 구축",
+    client: "SK텔레콤",
+    period: "2026.06. ~ 진행 중 (2개월)",
+    description:
+      "에너지/태양광 통계 집계 및 데이터 이관을 담당하는 Java 배치 시스템 신규 구축과 안정화",
+    highlights: [
+      {
+        text: "시간별~연별 통계 집계 SQL의 불필요한 단위 변환과 날짜 포맷 오류로 인한 통계값 왜곡을 원인 분석 후 매퍼 4종 수정 및 단위 테스트로 회귀 방지",
+        href: "/posts/energy-tree-stat-distortion",
+      },
+      "태양광 통계 집계 배치 신규 개발 — CTE 기반 집계 SQL 설계, UPSERT로 재실행 안전성 확보, 15분 단위 버킷 처리",
+      {
+        text: "이관 데이터에서 다른 빌딩 값이 섞인 것으로 의심되는 이상값을 단계별 진단 로그로 추적해 원인을 특정하고, 무중단 UPSERT 방식으로 안전하게 보정",
+        href: "/posts/solar-data-cross-building-contamination",
+      },
+      "Kafka로 수신한 마이그레이션 작업을 실행하는 CLI 연동 배치 구축, 기간(Daily Range) 단위 재처리 기능으로 확장",
+      "운영 로그에 SQL 파라미터·조회 결과가 그대로 노출되는 위험을 발견해 p6spy 도입 및 프로파일별 로그 레벨 분리로 차단",
     ],
   },
   {
