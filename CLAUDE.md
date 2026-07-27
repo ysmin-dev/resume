@@ -1,2 +1,2 @@
 @AGENTS.md
-@.claude/commit-convention.md
+@.claude/rules/commit-convention.md
