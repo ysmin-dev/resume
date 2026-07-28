@@ -7,9 +7,11 @@ import {
   profile,
   projects,
   skills,
+  type Highlight,
 } from "@/data/resume";
 import { PrintButton } from "@/components/PrintButton";
 import { SectionNav } from "@/components/SectionNav";
+import { ProfileSummary } from "@/components/ProfileSummary";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -19,13 +21,25 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
-function renderBold(text: string) {
-  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
-    part.startsWith("**") && part.endsWith("**") ? (
-      <strong key={i}>{part.slice(2, -2)}</strong>
-    ) : (
-      part
-    ),
+function HighlightList({ highlights }: { highlights: Highlight[] }) {
+  return (
+    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-zinc-700 dark:text-zinc-300">
+      {highlights.map((highlight) => {
+        if (typeof highlight === "string") {
+          return <li key={highlight}>{highlight}</li>;
+        }
+        return (
+          <li key={highlight.text}>
+            <Link
+              href={highlight.href}
+              className="font-semibold underline decoration-dotted underline-offset-2 hover:text-zinc-900 dark:hover:text-zinc-50"
+            >
+              {highlight.text}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
@@ -51,10 +65,10 @@ export default function Home() {
             <h1 className="text-4xl font-black tracking-tight text-zinc-900 dark:text-zinc-50">
               {profile.name}
             </h1>
-            <div className="h-7" aria-hidden="true" />
-            <p className="whitespace-pre-line text-zinc-700 dark:text-zinc-300">
-              {renderBold(profile.summary)}
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              만 {profile.age}세, {profile.birthYear}년생
             </p>
+            <ProfileSummary summary={profile.summary} />
             <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
               <a
                 href={`tel:${profile.phone.replace(/-/g, "")}`}
@@ -155,23 +169,22 @@ export default function Home() {
                 <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-300">
                   {project.description}
                 </p>
-                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-zinc-700 dark:text-zinc-300">
-                  {project.highlights.map((highlight) => {
-                    if (typeof highlight === "string") {
-                      return <li key={highlight}>{highlight}</li>;
-                    }
-                    return (
-                      <li key={highlight.text}>
-                        <Link
-                          href={highlight.href}
-                          className="font-semibold underline decoration-dotted underline-offset-2 hover:text-zinc-900 dark:hover:text-zinc-50"
-                        >
-                          {highlight.text}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
+                {project.highlights && (
+                  <HighlightList highlights={project.highlights} />
+                )}
+                {project.groups?.map((group) => (
+                  <div key={group.label} className="mt-4">
+                    <p className="flex flex-wrap items-baseline gap-x-2 text-sm font-semibold text-zinc-800 dark:text-zinc-200">
+                      {group.label}
+                      {group.period && (
+                        <span className="text-xs font-normal text-zinc-400 dark:text-zinc-500">
+                          {group.period}
+                        </span>
+                      )}
+                    </p>
+                    <HighlightList highlights={group.highlights} />
+                  </div>
+                ))}
               </div>
             ))}
           </div>
