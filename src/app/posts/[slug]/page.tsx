@@ -32,6 +32,13 @@ export default async function PostPage({
     notFound();
   }
 
+  const blocks = [
+    { label: "이슈 및 현상", body: post.issue },
+    { label: "원인 파악", body: post.cause },
+    { label: "해결 방안", body: post.solution },
+    { label: "결과 및 성과", body: post.result },
+  ];
+
   return (
     <div className="flex flex-1 flex-col items-center bg-zinc-50 dark:bg-black">
       <main className="w-full max-w-[950px] bg-white px-6 py-16 sm:px-12 dark:bg-black">
@@ -57,9 +64,24 @@ export default async function PostPage({
           ))}
         </div>
 
-        <p className="mt-8 whitespace-pre-line leading-relaxed text-zinc-700 dark:text-zinc-300">
-          {post.content}
-        </p>
+        <div className="mt-10 flex flex-col gap-8">
+          {blocks.map((block, i) => (
+            <section
+              key={block.label}
+              className="border-l-2 border-zinc-200 pl-5 dark:border-zinc-800"
+            >
+              <h2 className="flex items-baseline gap-2 text-base font-bold text-zinc-900 dark:text-zinc-50">
+                <span className="text-sm font-semibold text-zinc-400 dark:text-zinc-500">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {block.label}
+              </h2>
+              <p className="mt-2 leading-relaxed text-zinc-700 dark:text-zinc-300">
+                {block.body}
+              </p>
+            </section>
+          ))}
+        </div>
       </main>
     </div>
   );
