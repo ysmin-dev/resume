@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "민연식 | 웹 개발자",
+  title: "민연식 | 이력서",
   description: "민연식의 이력서 — React, TypeScript, Next.js, Java, Spring",
 };
 
