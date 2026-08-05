@@ -65,16 +65,24 @@ export type Career = {
   tasks: string[];
 };
 
-function calculateTenure(startYear: number, startMonth: number): string {
+function monthsSince(startYear: number, startMonth: number): number {
   const now = new Date();
-  const totalMonths =
-    (now.getFullYear() - startYear) * 12 + (now.getMonth() - (startMonth - 1));
+  return (
+    (now.getFullYear() - startYear) * 12 + (now.getMonth() - (startMonth - 1))
+  );
+}
+
+function calculateTenure(startYear: number, startMonth: number): string {
+  const totalMonths = monthsSince(startYear, startMonth);
   const years = Math.floor(totalMonths / 12);
   const months = totalMonths % 12;
   if (years === 0) return `${months}개월`;
   if (months === 0) return `${years}년`;
   return `${years}년 ${months}개월`;
 }
+
+// 첫 입사(2020.12) 기준 연차 — 첫 해가 1년차이므로 경과 연수 + 1
+export const careerYear = Math.floor(monthsSince(2020, 12) / 12) + 1;
 
 export const careers: Career[] = [
   {

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   careers,
+  careerYear,
   certifications,
   education,
   profile,
@@ -117,7 +118,7 @@ export default function Home() {
 
         {/* Career */}
         <section id="career" className="mb-14 scroll-mt-20">
-          <SectionTitle>경력</SectionTitle>
+          <SectionTitle>경력 ({careerYear}년차)</SectionTitle>
           <div className="flex flex-col gap-8">
             {careers.map((career) => (
               <div key={career.company}>
