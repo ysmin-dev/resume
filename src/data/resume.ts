@@ -12,6 +12,7 @@ export const profile = {
   name: "민연식",
   birthYear: 1994,
   age: calculateAge(1994, 11, 21),
+  residence: "서울시 관악구",
   phone: "010-5095-5912",
   email: "minys94@naver.com",
   github: "https://github.com/ysmin-dev",

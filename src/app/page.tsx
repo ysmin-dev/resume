@@ -67,16 +67,10 @@ export default function Home() {
               {profile.name}
             </h1>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
-              만 {profile.age}세, {profile.birthYear}년생
+              만 {profile.age}세({profile.birthYear}년생) · {profile.residence} · {profile.phone}
             </p>
             <ProfileSummary summary={profile.summary} />
             <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
-              <a
-                href={`tel:${profile.phone.replace(/-/g, "")}`}
-                className="hover:text-zinc-900 hover:underline dark:hover:text-zinc-100"
-              >
-                {profile.phone}
-              </a>
               <a
                 href={`mailto:${profile.email}`}
                 className="hover:text-zinc-900 hover:underline dark:hover:text-zinc-100"
