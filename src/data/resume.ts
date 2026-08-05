@@ -144,7 +144,7 @@ export const projects: Project[] = [
             href: "/posts/kafka-publish-failure-and-retry",
           },
           {
-            text: "Kafka Producer 설정 튜닝으로 장애 시 로그 폭주 제거",
+            text: "Kafka 브로커 장애 시 폭주하던 Producer 로그를 타임아웃·재시도 설정 조정으로 해소",
             href: "/posts/kafka-producer-infinite-retry-log",
           },
           {
