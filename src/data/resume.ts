@@ -19,8 +19,6 @@ export const profile = {
   summary: `사용자가 체감하는 서비스 완성도는 **데이터 처리 속도와 오류 없는 시스템**에 시작된다고 생각합니다.
 웹 개발 중심으로 **백엔드 아키텍처와 데이터 최적화** 역량을 강화해 왔습니다.
 
-동료들과의 생각의 차이를 존중하고 다양한 관점에서 시스템을 바라보는 것이 최적의 해결책을 만든다고 생각합니다
-
 '코드는 얕게, 생각은 깊게'라는 저만의 개발 철학으로, AI 기술을 적극적으로 활용한 가독성과 유지보수성을 높이는 코드 구조를 지향합니다.
 
 단순히 구현하는 개발에 머무르지 않고 사용자 관점에서 데이터와 UI/UX를 이해하며 안정적 시스템을 구축해 해나가겠습니다.`,
@@ -94,8 +92,8 @@ export const careers: Career[] = [
     department: "Cloud AX 본부",
     tasks: [
       "React 기반 이동통신사 관리자용 대용량 기지국 관리 기능 설계 및 개발",
-      "Java/Spring 기반 레거시 시스템 안정화 및 고도화",
-      "Kafka 메시징 장애 대응 체계 설계(DB 트랜잭션 분리, 재시도/취소 로직) 및 Producer 설정 튜닝",      
+      "Java/Spring 기반 레거시 시스템 안정화 및 통계·데이터 이관 배치 개발",
+      "Kafka 메시징 장애 대응 체계 설계 및 Producer 설정 튜닝",
     ],
   },
   {
@@ -147,18 +145,10 @@ export const projects: Project[] = [
         period: "2026.02. ~ 진행 중",
         highlights: [
           "React 기반 CSR을 Spring Boot/Thymeleaf 기반 SSR로 전면 전환",
-          "알람/DDC/Agent 등 관리자 화면 신규 구축 및 UI 표준화",
+          "인덱스를 무력화하던 DATE() 함수 조건을 범위 조건으로 재작성해 8천만 행 트리 조회를 8.44초에서 0.39초로 단축",
           {
             text: "Kafka 발행 실패 시 DB 정합성을 재시도·취소로 보장",
             href: "/posts/kafka-publish-failure-and-retry",
-          },
-          {
-            text: "Kafka 브로커 장애 시 폭주하던 Producer 로그를 타임아웃·재시도 설정 조정으로 해소",
-            href: "/posts/kafka-producer-infinite-retry-log",
-          },
-          {
-            text: "마이그레이션 조합 자동 생성 오류를 확정 조합만 저장하도록 개선",
-            href: "/posts/migration-unintended-combination",
           },
         ],
       },
@@ -166,17 +156,9 @@ export const projects: Project[] = [
         label: "통계 집계 · 데이터 이관 배치 시스템",
         period: "2026.06. ~ 진행 중",
         highlights: [
-          {
-            text: "통계 집계 SQL의 단위 변환·날짜 포맷 오류로 인한 값 왜곡 수정",
-            href: "/posts/energy-tree-stat-distortion",
-          },
-          "태양광 통계 집계 배치 신규 개발 (CTE·UPSERT 설계)",
-          {
-            text: "이관 데이터 빌딩값 혼입을 진단 로그로 추적해 무중단 보정",
-            href: "/posts/solar-data-cross-building-contamination",
-          },
-          "Kafka 수신 마이그레이션 실행 CLI 배치 구축 및 기간 재처리 확장",
-          "운영 로그의 SQL 파라미터 노출 위험을 p6spy 도입으로 차단",
+          "날짜마다 JVM을 새로 띄우던 통계 CLI를 기간 커서 루프로 재설계해 주간 집계를 198초에서 8.2초로 단축",
+          "SQL이 아닌 로깅이 병목임을 규명해 응답을 16초에서 0.39초로 단축",
+          "적산 계측값이 리셋될 때 음수 변화량이 통계로 전파되던 결함을 가드 로직으로 차단",
         ],
       },
     ],
