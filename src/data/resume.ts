@@ -49,12 +49,12 @@ export const philosophy = {
 export const skills = [
   "Java",
   "Spring Boot",
+  "MyBatis",
+  "Kafka",
   "MariaDB",
   "React",
   "TypeScript",
   "Next.js",
-  "axios",
-  
 ];
 
 export type Career = {
@@ -93,9 +93,10 @@ export const careers: Career[] = [
     duration: `${calculateTenure(2022, 12)}, 정규직`,
     department: "Cloud AX 본부",
     tasks: [
+      "관리자 웹 플랫폼 백엔드 구축 및 CSR → SSR 아키텍처 전환",
+      "Java/Spring 기반 레거시 시스템 안정화 및 통계 집계·데이터 이관 배치 개발",
+      "Kafka 컨슈머 장애 대응 체계 설계 및 유실 구간 재처리 경로 구축",
       "React 기반 이동통신사 관리자용 대용량 기지국 관리 기능 설계 및 개발",
-      "Java/Spring 기반 레거시 시스템 안정화 및 통계·데이터 이관 배치 개발",
-      "Kafka 메시징 장애 대응 체계 설계 및 Producer 설정 튜닝",
     ],
   },
   {
@@ -140,17 +141,29 @@ export const projects: Project[] = [
     client: "SK텔레콤",
     period: "2026.02. ~ 진행 중 (6개월)",
     description:
-      "에너지 관리 시스템(EMS)의 관리자 웹 구축(CSR → SSR 전환)부터 통계 집계·데이터 이관 배치까지 담당",
+      "에너지 관리 시스템(EMS)의 관리자 웹 플랫폼 구축(CSR → SSR 전환)부터 Kafka 기반 비동기 이벤트 처리, 통계 집계·데이터 이관 배치까지 담당",
     groups: [
       {
-        label: "관리자 웹 · CSR → SSR 전환",
+        label: "관리자 웹 플랫폼 · CSR → SSR 전환",
         period: "2026.02. ~ 진행 중",
         highlights: [
           "React 기반 CSR을 Spring Boot/Thymeleaf 기반 SSR로 전면 전환",
           "인덱스를 무력화하던 DATE() 함수 조건을 범위 조건으로 재작성해 8천만 행 트리 조회를 8.44초에서 0.39초로 단축",
+        ],
+      },
+      {
+        label: "Kafka 기반 비동기 이벤트 처리",
+        period: "2026.04. ~ 2026.07.",
+        highlights: [
+          "최대 1시간이 걸리는 배치가 max.poll.interval을 초과해 리밸런스·중복 처리되던 문제를 폴링 주기 재설계로 해결",
+          "실시간 스트림만 소비해 복구 수단이 없던 구조에 replay 전용 컨슈머 그룹을 추가하고 유실 구간 재처리 경로 확보",
           {
             text: "Kafka 발행 실패 시 DB 정합성을 재시도·취소로 보장",
             href: "/posts/kafka-publish-failure-and-retry",
+          },
+          {
+            text: "브로커 장애 시 로그를 폭주시키던 Producer 재시도 정책을 빠른 실패로 조정",
+            href: "/posts/kafka-producer-infinite-retry-log",
           },
         ],
       },
@@ -159,7 +172,7 @@ export const projects: Project[] = [
         period: "2026.06. ~ 진행 중",
         highlights: [
           "날짜마다 JVM을 새로 띄우던 통계 CLI를 기간 커서 루프로 재설계해 주간 집계를 198초에서 8.2초로 단축",
-          "SQL이 아닌 로깅이 병목임을 규명해 응답을 16초에서 0.39초로 단축",
+          "응답 지연의 원인이 SQL이 아닌 로깅임을 로그 분석으로 규명해 16초를 0.39초로 단축",
           "적산 계측값이 리셋될 때 음수 변화량이 통계로 전파되던 결함을 가드 로직으로 차단",
         ],
       },
