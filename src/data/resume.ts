@@ -157,6 +157,7 @@ export const projects: Project[] = [
         highlights: [
           "최대 1시간이 걸리는 배치가 max.poll.interval을 초과해 리밸런스·중복 처리되던 문제를 폴링 주기 재설계로 해결",
           "실시간 스트림만 소비해 복구 수단이 없던 구조에 replay 전용 컨슈머 그룹을 추가하고 유실 구간 재처리 경로 확보",
+          "8개 서비스가 공유하는 Kafka 구조와 장애 이력을 AI 도구로 교차 분석해 문서화하고 팀의 장애 원인 추적 경로를 단일화",
           {
             text: "Kafka 발행 실패 시 DB 정합성을 재시도·취소로 보장",
             href: "/posts/kafka-publish-failure-and-retry",
